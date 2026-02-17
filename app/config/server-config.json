@@ -1,0 +1,52 @@
+{
+    "servers": [
+        {
+            "outlet_code": "TKK",
+            "db_host": "192.168.47.206",
+            "db_port": 1433,
+            "db_name": "TKK",
+            "db_encrypt": false,
+            "db_trustServerCertificate": true
+        },
+        {
+            "outlet_code": "MK01",
+            "db_host": "192.168.33.210",
+            "db_port": 1433,
+            "db_name": "MK01",
+            "db_encrypt": false,
+            "db_trustServerCertificate": true
+        },
+        {
+            "outlet_code": "MK02",
+            "db_host": "192.168.15.200",
+            "db_port": 1433,
+            "db_name": "MK02",
+            "db_encrypt": false,
+            "db_trustServerCertificate": true
+        },
+        {
+            "outlet_code": "MK04",
+            "db_host": "192.168.3.200",
+            "db_port": 1433,
+            "db_name": "MK04",
+            "db_encrypt": false,
+            "db_trustServerCertificate": true
+        },
+        {
+            "outlet_code": "MK05",
+            "db_host": "192.168.77.55",
+            "db_port": 1433,
+            "db_name": "MK05",
+            "db_encrypt": false,
+            "db_trustServerCertificate": true
+        },
+        {
+            "outlet_code": "TK01",
+            "db_host": "192.168.8.200",
+            "db_port": 1433,
+            "db_name": "TK01",
+            "db_encrypt": false,
+            "db_trustServerCertificate": true
+        }
+    ]
+}
