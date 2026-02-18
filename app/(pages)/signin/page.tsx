@@ -51,7 +51,7 @@ export default function Signin() {
 
           <div className="flex justify-center mb-8">
             <Image
-              src="/logo.png"
+              src="/logo/logo-topsell-red.png"
               alt="Logo"
               width={120}
               height={40}

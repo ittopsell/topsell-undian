@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // Execute query        const result = await executeQuery(
+        // Execute query
         const result = await executeQuery("TKK",
     "SELECT kode, nama, outlet, isAktif FROM [kasir] WHERE PassKey = @param0 AND outlet !='SEMUA'",
     [passkey]);

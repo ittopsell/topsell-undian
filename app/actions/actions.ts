@@ -2,6 +2,7 @@
 
 import { cookies } from "next/headers";
 import { encryptCookie } from "../lib/cookies";
+import { logger } from "../lib/logger";
 
 export async function signinAction(prevState: any, formData: FormData) {
   const passkey = formData.get("passkey") as string;
@@ -10,7 +11,7 @@ export async function signinAction(prevState: any, formData: FormData) {
 
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/auth/signin`,
+      `${process.env.API_URL}/api/auth/signin`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -20,8 +21,15 @@ export async function signinAction(prevState: any, formData: FormData) {
     );
 
     const result = await res.json();
+    console.log(result);
+
+    if (result.error) {
+      logger.error("Signin failed:", result);
+      return { error: result.error || "Login failed" };
+    }
 
     if (!res.ok || result.error) {
+      logger.error("Signin failed:", result);
       return { error: result.error || "Login failed" };
     }
 
@@ -34,6 +42,8 @@ export async function signinAction(prevState: any, formData: FormData) {
       })
     );
 
+    logger.info(encrypted);
+
     (await cookies()).set("session", encrypted, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
@@ -42,8 +52,11 @@ export async function signinAction(prevState: any, formData: FormData) {
       maxAge: 60 * 60 * 24, // 1 day
     });
 
+    console.log("✅ Signed in");
+
     return { success: true };
   } catch (err: any) {
+    logger.error("Signin failed:", err);
     return { error: err.message };
   }
 }

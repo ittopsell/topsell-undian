@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { PrinterIcon, ArrowPathIcon  } from "@heroicons/react/24/outline"; // pakai heroicons
 import Swal from "sweetalert2";
+import { logoutAction } from "../actions/signout";
 
 interface Transaction {
   id: number;
@@ -130,7 +131,7 @@ export default function RootPage() {
 
             <div class="footer">
               Pengundian dilaksanakan tanggal<br/>
-              5 Mei 2026
+              31 Mei 2026
             </div>
 
           </div>
@@ -248,7 +249,7 @@ export default function RootPage() {
     <div className="min-h-screen font-sans bg-linear-to-br from-[#84fab0] to-[#8fd3f4] dark:from-gray-900 dark:to-black">
       {/* Header */}
       <header className="w-full bg-white dark:bg-slate-900 shadow-md py-4">
-        <div className="max-w-5xl mx-auto flex items-center justify-center">
+        <div className="max-w-5xl mx-auto flex items-center justify-between">
           <Image
             src="/logo/logo-topsell-red.png"
             alt="Logo"
@@ -256,7 +257,18 @@ export default function RootPage() {
             height={40}
             priority
           />
+          <form action={logoutAction}>
+            <button className="mt-4 flex items-center justify-center px-4 py-2 rounded-xl
+                      bg-linear-to-r from-blue-600 to-indigo-600
+                      hover:from-blue-700 hover:to-indigo-700
+                      text-white font-medium tracking-wide
+                      shadow-lg shadow-blue-500/30
+                      transition-all duration-300
+                      active:scale-[0.97]
+                      disabled:opacity-50 disabled:cursor-not-allowed" type="submit">Logout</button>
+          </form>
         </div>
+        
       </header>
 
       {/* Main */}
